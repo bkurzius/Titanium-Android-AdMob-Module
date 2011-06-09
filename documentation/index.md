@@ -2,7 +2,12 @@
 
 ## Description
 
-Allows for the display of AdMob in Titanium Android applications
+Allows for the display of AdMob in Titanium Android applications. 
+
+Please note that if your androidManifest has screen support set to: android:anyDensity="false", 
+any banner ads will display too small on high density devices. 
+It is not clear at this point if this is a bug with adMob or Titanium. 
+In any event, you will either need to NOT set your screen support -- or set android:anyDensity="true" and adjust your app layout accordingly
 
 ## Accessing the admob Module
 

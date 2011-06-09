@@ -22,6 +22,7 @@ public class AdMobView extends TiUIView implements AdListener
 {
 	private static final String LCAT = "AdMobView";
 	AdView adView;
+	Activity thisActivity;
 
 	public AdMobView(final TiViewProxy proxy) {
 		
@@ -30,26 +31,50 @@ public class AdMobView extends TiUIView implements AdListener
 		Log.d(LCAT, "Creating an adMob ad");
 		// get the publisher id that was set in the module
 		Log.d(LCAT, "AdmobModule.PUBLISHER_ID: " + AdmobModule.PUBLISHER_ID);
-		Activity thisActivity = (Activity) proxy.getTiContext().getActivity();
-		
+		thisActivity = (Activity) proxy.getTiContext().getActivity();
 		// create the adView
 		adView = new AdView(thisActivity, AdSize.BANNER, AdmobModule.PUBLISHER_ID);
+		// Create an ad request.
+		AdRequest adRequest = new AdRequest();
+	    // Fill out ad request
+		// determine testing based on Module variable
+		adRequest.setTesting(AdmobModule.TESTING);
 		// Start loading the ad in the background.
-		adView.loadAd(new AdRequest());
+		adView.loadAd(adRequest);
 		// set the listener
 		adView.setAdListener(this);
 		// Add the AdView to your view hierarchy. 
 		// The view will have no size until the ad is loaded.
-		setNativeView(adView);		
+		setNativeView(adView);	
+		
 	}
 
 	@Override
-	public void processProperties(KrollDict d)
-	{
+	public void processProperties(KrollDict d){
 		super.processProperties(d);
 		Log.d(LCAT, "process properties");
 	}
 	
+	// pass the method the TESTING flag
+	public void requestAd() {
+		Log.d(LCAT, "requestAd()");
+		// pass the TESTING flag
+		loadAd(AdmobModule.TESTING);
+	}
+	
+	// pass true to requestAd(Boolean testing) -- regardless of what the module has set
+	public void requestTestAd() {
+		Log.d(LCAT, "requestTestAd()");
+		loadAd(true);
+	}
+	
+	// load the adMob ad
+	public void loadAd(Boolean testing) {
+		Log.d(LCAT, "requestAd(Boolean testing) -- testing:" + testing);
+		AdRequest adRequest = new AdRequest();
+		adRequest.setTesting(testing);
+		adView.loadAd(adRequest);
+	}
 	
 	// required methods for the AdListener interface
 	public void onReceiveAd(Ad ad){

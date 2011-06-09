@@ -1,58 +1,55 @@
-// Example for using AdMob
-// require the module
+var win = Titanium.UI.createWindow({
+	backgroundColor:"#FFFFFF",
+    layout:"vertical"
+});
+
+// require AdMob
 var admob = require('com.studioclassics.admob');
 
 // set your publisher id
-admob.setPublisherId("<your-publisher-id>");
+admob.setPublisherId("<your publisher id>");
 
-// This uses a tab group so that there are two chances to get a valid ad
+// set if the ads should be test ads or not -- 
+// default is false so you only need to call this if you want to set it to true
+admob.setTesting(false);
 
-var tabGroup = Ti.UI.createTabGroup();
-var myWin = Titanium.UI.createWindow({
-	backgroundColor:"#FFFFFF"
-});
 // then create an adMob view
 var adMobView = admob.createAdMobView();
-adMobView.top = 200;
-myWin.add(adMobView);
 
-var myWin2 = Titanium.UI.createWindow({
-	backgroundColor:"#226600"
+//listener for adReceived
+adMobView.addEventListener(admob.adReceived,function(){
+    alert("ad was just received");
 });
-// then create an adMob view
-var adMobView2 = admob.createAdMobView();
-adMobView2.top = 100;
-myWin2.add(adMobView2);
 
- 
-tabGroup.addTab(Ti.UI.createTab({
-    title: 'AdMob Tab 1',
-    window: myWin
-}));
-tabGroup.addTab(Ti.UI.createTab({
-    title: 'AdMob Tab 2',
-    window: myWin2
-}));
-tabGroup.open();
-
-// set listeners
-
-//listener for ad_received
-adMobView.addEventListener("ad_received",function(){
-    alert("ad 1 was received");
-});
-//listener for ad_not_received
-adMobView.addEventListener("ad_not_received",function(){
-    alert("ad 1 was not received");
+//listener for adNotReceived
+adMobView.addEventListener(admob.adNotReceived,function(){
+    alert("ad was not received");
 });
 
 
-//listener for ad_received
-adMobView2.addEventListener("ad_received",function(){
-    alert("ad 2 was received");
+var adRequestBtn = Ti.UI.createButton({
+    title:"Request ad",
+    top:10,
+    height: 30,
+    width: 200
 });
 
-//listener for ad_not_received
-adMobView2.addEventListener("ad_not_received",function(){
-    alert("ad 2 was not received");
+adRequestBtn.addEventListener("click",function(){
+    adMobView.requestAd();
 });
+
+var adRequestBtn2 = Ti.UI.createButton({
+    title:"Request test ad",
+    top:10,
+    height: 30,
+    width: 200
+});
+
+adRequestBtn2.addEventListener("click",function(){
+    adMobView.requestTestAd();
+});
+
+win.add(adMobView);
+win.add(adRequestBtn);
+win.add(adRequestBtn2);
+win.open();

@@ -36,5 +36,25 @@ public class AdmobModule extends KrollModule
 		Log.d(LCAT, "setPublisherId(): " + pubId);
 		PUBLISHER_ID = pubId;
 	}
+	
+	@Kroll.method
+	public void setTesting(Boolean testing) {
+		Log.d(LCAT, "setTesting(): " + testing);
+		TESTING = testing;
+	}
+	
+	// Properties
+	@Kroll.getProperty
+	public String getAdReceived() {
+		Log.d(LCAT, "getAdReceived()");
+		return AD_RECEIVED;
+	}
+
+	@Kroll.getProperty
+	public String getAdNotReceived() {
+		Log.d(LCAT, "getAdNotReceived()");
+		return AD_NOT_RECEIVED;
+	}
+
 
 }

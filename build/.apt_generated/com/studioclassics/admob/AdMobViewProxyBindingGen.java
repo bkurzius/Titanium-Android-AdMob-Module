@@ -38,11 +38,15 @@ public class AdMobViewProxyBindingGen
 {
 	private static final String TAG = "AdMobViewProxyBindingGen";
 
+	private static final String METHOD_requestAd = "requestAd";
+	private static final String METHOD_requestTestAd = "requestTestAd";
 		
 	public AdMobViewProxyBindingGen() {
 		super();
 		// Constants are pre-bound
 		
+		bindings.put(METHOD_requestAd, null);
+		bindings.put(METHOD_requestTestAd, null);
 		
 	}
 
@@ -61,6 +65,46 @@ public class AdMobViewProxyBindingGen
 
 
 
+		// Methods
+		if (name.equals(METHOD_requestAd)) {
+			KrollMethod requestAd_method = new KrollMethod(METHOD_requestAd) {
+				public Object invoke(KrollInvocation __invocation, Object[] __args) throws Exception
+				{
+	
+
+	Object __requestAd_tmp;
+	
+	
+	
+	
+	((AdMobViewProxy) __invocation.getProxy()).requestAd(
+);
+		return KrollProxy.UNDEFINED;
+				}
+			};
+			bindings.put(METHOD_requestAd, requestAd_method);
+			return requestAd_method;
+		}
+		
+		if (name.equals(METHOD_requestTestAd)) {
+			KrollMethod requestTestAd_method = new KrollMethod(METHOD_requestTestAd) {
+				public Object invoke(KrollInvocation __invocation, Object[] __args) throws Exception
+				{
+	
+
+	Object __requestTestAd_tmp;
+	
+	
+	
+	
+	((AdMobViewProxy) __invocation.getProxy()).requestTestAd(
+);
+		return KrollProxy.UNDEFINED;
+				}
+			};
+			bindings.put(METHOD_requestTestAd, requestTestAd_method);
+			return requestTestAd_method;
+		}
 
 
 		return super.getBinding(name);

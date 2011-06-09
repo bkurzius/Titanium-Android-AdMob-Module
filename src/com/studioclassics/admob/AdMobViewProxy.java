@@ -9,6 +9,7 @@ import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiContext;
 import org.appcelerator.titanium.proxy.TiViewProxy;
+import org.appcelerator.titanium.util.Log;
 import org.appcelerator.titanium.view.TiUIView;
 
 import android.app.Activity;
@@ -17,7 +18,8 @@ import android.app.Activity;
 public class AdMobViewProxy extends TiViewProxy
 {
 	private AdMobView adMob;
-	
+	private static final String LCAT = "AdMobViewProxy";
+
 	public AdMobViewProxy(TiContext tiContext)
 	{
 		super(tiContext);
@@ -31,9 +33,20 @@ public class AdMobViewProxy extends TiViewProxy
 	}
 
 	@Override
-	public TiUIView createView(Activity activity)
-	{
+	public TiUIView createView(Activity activity){
 		adMob = new AdMobView(this);
 		return adMob;
 	}
+	
+	@Kroll.method
+	public void requestAd() {
+		Log.d(LCAT, "requestAd()");
+		adMob.requestAd();
+	}
+	@Kroll.method
+	public void requestTestAd() {
+		Log.d(LCAT, "requestTestAd(): ");
+		adMob.requestTestAd();
+	}
+	
 }

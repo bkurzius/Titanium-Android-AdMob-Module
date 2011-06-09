@@ -39,6 +39,9 @@ public class AdmobModuleBindingGen
 	private static final String TAG = "AdmobModuleBindingGen";
 
 	private static final String CREATE_AdMobView = "createAdMobView";
+	private static final String DYNPROP_adNotReceived = "adNotReceived";
+	private static final String DYNPROP_adReceived = "adReceived";
+	private static final String METHOD_setTesting = "setTesting";
 	private static final String METHOD_setPublisherId = "setPublisherId";
 		
 	public AdmobModuleBindingGen() {
@@ -46,6 +49,9 @@ public class AdmobModuleBindingGen
 		// Constants are pre-bound
 		
 		bindings.put(CREATE_AdMobView, null);
+		bindings.put(DYNPROP_adNotReceived, null);
+		bindings.put(DYNPROP_adReceived, null);
+		bindings.put(METHOD_setTesting, null);
 		bindings.put(METHOD_setPublisherId, null);
 		
 	}
@@ -75,8 +81,106 @@ public class AdmobModuleBindingGen
 
 
 
+		// Dynamic Properties
+		if (name.equals(DYNPROP_adNotReceived)) {
+			KrollDynamicProperty adNotReceived_property = new KrollDynamicProperty(DYNPROP_adNotReceived,
+				true, false,
+				false) {
+				
+				@Override
+				public Object dynamicGet(KrollInvocation __invocation) {
+	
+
+	Object __getAdNotReceived_tmp;
+	final org.appcelerator.kroll.KrollConverter __getAdNotReceived_converter = org.appcelerator.kroll.KrollConverter.getInstance();
+	
+	
+	java.lang.String __retVal =
+	
+	
+	((AdmobModule) __invocation.getProxy()).getAdNotReceived(
+);
+	return __getAdNotReceived_converter.convertNative(__invocation, __retVal);
+				}
+
+				@Override
+				public void dynamicSet(KrollInvocation __invocation, Object __value) {
+					Log.w(TAG, "Property Admob.adNotReceived isn't writable");
+				}
+			};
+			adNotReceived_property.setJavascriptConverter(org.appcelerator.kroll.KrollConverter.getInstance());
+			adNotReceived_property.setNativeConverter(org.appcelerator.kroll.KrollConverter.getInstance());
+			bindings.put(DYNPROP_adNotReceived, adNotReceived_property);
+			return adNotReceived_property;
+		}
+		
+		if (name.equals(DYNPROP_adReceived)) {
+			KrollDynamicProperty adReceived_property = new KrollDynamicProperty(DYNPROP_adReceived,
+				true, false,
+				false) {
+				
+				@Override
+				public Object dynamicGet(KrollInvocation __invocation) {
+	
+
+	Object __getAdReceived_tmp;
+	final org.appcelerator.kroll.KrollConverter __getAdReceived_converter = org.appcelerator.kroll.KrollConverter.getInstance();
+	
+	
+	java.lang.String __retVal =
+	
+	
+	((AdmobModule) __invocation.getProxy()).getAdReceived(
+);
+	return __getAdReceived_converter.convertNative(__invocation, __retVal);
+				}
+
+				@Override
+				public void dynamicSet(KrollInvocation __invocation, Object __value) {
+					Log.w(TAG, "Property Admob.adReceived isn't writable");
+				}
+			};
+			adReceived_property.setJavascriptConverter(org.appcelerator.kroll.KrollConverter.getInstance());
+			adReceived_property.setNativeConverter(org.appcelerator.kroll.KrollConverter.getInstance());
+			bindings.put(DYNPROP_adReceived, adReceived_property);
+			return adReceived_property;
+		}
 
 		// Methods
+		if (name.equals(METHOD_setTesting)) {
+			KrollMethod setTesting_method = new KrollMethod(METHOD_setTesting) {
+				public Object invoke(KrollInvocation __invocation, Object[] __args) throws Exception
+				{
+	
+	KrollBindingUtils.assertRequiredArgs(__args, 1, METHOD_setTesting);
+
+	Object __setTesting_tmp;
+		KrollArgument __testing_argument = new KrollArgument("testing");
+		java.lang.Boolean testing;
+			__testing_argument.setOptional(false);
+			
+				__setTesting_tmp = org.appcelerator.kroll.KrollConverter.getInstance().convertJavascript(__invocation, __args[0], java.lang.Boolean.class);
+				try {
+					testing = (java.lang.Boolean) __setTesting_tmp;
+				} catch (ClassCastException e) {
+					throw new IllegalArgumentException("Expected java.lang.Boolean type for argument \"testing\" in \"setTesting\", but got " + __setTesting_tmp);
+				}
+		__testing_argument.setValue(testing);
+		__invocation.addArgument(__testing_argument);
+	
+	
+	
+	
+	((AdmobModule) __invocation.getProxy()).setTesting(
+		testing
+		);
+		return KrollProxy.UNDEFINED;
+				}
+			};
+			bindings.put(METHOD_setTesting, setTesting_method);
+			return setTesting_method;
+		}
+		
 		if (name.equals(METHOD_setPublisherId)) {
 			KrollMethod setPublisherId_method = new KrollMethod(METHOD_setPublisherId) {
 				public Object invoke(KrollInvocation __invocation, Object[] __args) throws Exception

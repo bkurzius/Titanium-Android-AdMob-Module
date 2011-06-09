@@ -1,22 +1,50 @@
 <h1>admob Module</h1>
 <h2>Description</h2>
-<p>TODO: Enter your module description here</p>
+<p>Allows for the display of AdMob in Titanium Android applications. </p>
+<p>Please note that if your androidManifest has screen support set to: android:anyDensity="false", 
+any banner ads will display too small on high density devices. 
+It is not clear at this point if this is a bug with adMob or Titanium. 
+In any event, you will either need to NOT set your screen support -- or set android:anyDensity="true" and adjust your app layout accordingly</p>
 <h2>Accessing the admob Module</h2>
 <p>To access this module from JavaScript, you would do the following:</p>
 <pre><code>var admob = require("com.studioclassics.admob");
 </code></pre>
 <p>The admob variable is a reference to the Module object. </p>
-<h2>Reference</h2>
-<p>TODO: If your module has an API, you should document
-the reference here.</p>
-<h3><strong>_PROJECTNAMEASIDENTIFIER</strong>.function</h3>
-<p>TODO: This is an example of a module function.</p>
-<h3><strong>_PROJECTNAMEASIDENTIFIER</strong>.property</h3>
-<p>TODO: This is an example of a module property.</p>
-<h2>Usage</h2>
-<p>TODO: Enter your usage example here</p>
-<h2>Author</h2>
-<p>TODO: Enter your author name, email and other contact
-details you want to share here. </p>
-<h2>License</h2>
-<p>TODO: Enter your license/legal information here.</p>
+<h1>Reference</h1>
+<h2>setPublisherId(String id);</h2>
+<p>Set your publisher id</p>
+<h3>Usage</h3>
+<p>admob.setPublisherId("123456");</p>
+<h2>setTesting(Boolean testing);</h2>
+<p>set if the ads should be test ads or not -- 
+default is false so you only need to call this if you want to set it to true</p>
+<h3>Usage</h3>
+<p>admob.setTesting(false);</p>
+<h2>createAdMobView()</h2>
+<p>returns a view with an ad initialized by default</p>
+<h3>Usage</h3>
+<p>var adMobView = admob.createAdMobView();</p>
+<h2>admob.AD_RECEIVED</h2>
+<p>returns the constant for AD_RECEIVED -- for use in an event listener</p>
+<h3>Usage</h3>
+<p>adMobView.addEventListener(admob.AD_RECEIVED,function(){
+    alert("ad was just received");
+});</p>
+<h2>admob.AD_NOT_RECEIVED</h2>
+<p>returns the constant for AD_NOT_RECEIVED -- for use in an event listener</p>
+<h3>Usage</h3>
+<p>adMobView.addEventListener(admob.AD_NOT_RECEIVED,function(){
+    alert("ad was not received");
+});</p>
+<h2>AdMobView.requestAd();</h2>
+<p>calls for a new ad if needed</p>
+<h3>Usage</h3>
+<p>adMobView.requestAd();</p>
+<h2>AdMobView.requestTestAd();</h2>
+<p>calls for a test ad if needed. This works independently from the testing flag above</p>
+<h3>Usage</h3>
+<p>adMobView.requestTestAd();</p>
+<h1>Author</h1>
+<p>Brian Kurzius | bkurzius@gmail.com</p>
+<h1>License</h1>
+<p>Apache License</p>

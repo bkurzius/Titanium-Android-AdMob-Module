@@ -38,6 +38,8 @@ public class AdmobModuleBindingGen
 {
 	private static final String TAG = "AdmobModuleBindingGen";
 
+	private static final String CONST_AD_RECEIVED = "AD_RECEIVED";
+	private static final String CONST_AD_NOT_RECEIVED = "AD_NOT_RECEIVED";
 	private static final String CREATE_AdMobView = "createAdMobView";
 	private static final String DYNPROP_adNotReceived = "adNotReceived";
 	private static final String DYNPROP_adReceived = "adReceived";
@@ -47,6 +49,8 @@ public class AdmobModuleBindingGen
 	public AdmobModuleBindingGen() {
 		super();
 		// Constants are pre-bound
+		bindings.put(CONST_AD_RECEIVED, AdmobModule.AD_RECEIVED);
+		bindings.put(CONST_AD_NOT_RECEIVED, AdmobModule.AD_NOT_RECEIVED);
 		
 		bindings.put(CREATE_AdMobView, null);
 		bindings.put(DYNPROP_adNotReceived, null);

@@ -18,8 +18,8 @@ public class AdmobModule extends KrollModule
 	// Standard Debugging variables
 	private static final String LCAT = "AdmobModule";
 	public static String MODULE_NAME = "AndroidAdMobModule";
-	public static final String AD_RECEIVED = "ad_received";
-	public static final String AD_NOT_RECEIVED = "ad_not_received";
+	@Kroll.constant public static final String AD_RECEIVED = "ad_received";
+	@Kroll.constant public static final String AD_NOT_RECEIVED = "ad_not_received";
 	public static Boolean TESTING = false;
 	public static String PUBLISHER_ID;
 	
@@ -43,6 +43,9 @@ public class AdmobModule extends KrollModule
 		TESTING = testing;
 	}
 	
+
+	// ******* Deprecated************
+	
 	// Properties
 	@Kroll.getProperty
 	public String getAdReceived() {
@@ -55,6 +58,9 @@ public class AdmobModule extends KrollModule
 		Log.d(LCAT, "getAdNotReceived()");
 		return AD_NOT_RECEIVED;
 	}
+	
+	// ******* Deprecated************
+
 
 
 }

@@ -43,21 +43,21 @@ returns a view with an ad initialized by default
 ### Usage
 var adMobView = admob.createAdMobView();
 
-## adReceived
+## admob.AD_RECEIVED
 
 returns the constant for AD_RECEIVED -- for use in an event listener
 
 ### Usage
-adMobView.addEventListener(admob.adReceived,function(){
+adMobView.addEventListener(admob.AD_RECEIVED,function(){
     alert("ad was just received");
 });
 
-## adNotReceived
+## admob.AD_NOT_RECEIVED
 
 returns the constant for AD_NOT_RECEIVED -- for use in an event listener
 
 ### Usage
-adMobView.addEventListener(admob.adNotReceived,function(){
+adMobView.addEventListener(admob.AD_NOT_RECEIVED,function(){
     alert("ad was not received");
 });
 

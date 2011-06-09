@@ -2,7 +2,7 @@
 
 ## Description
 
-TODO: Enter your module description here
+Allows for the display of AdMob in Titanium Android applications
 
 ## Accessing the admob Module
 
@@ -14,26 +14,70 @@ The admob variable is a reference to the Module object.
 
 ## Reference
 
-TODO: If your module has an API, you should document
-the reference here.
+### setPublisherId(String id);
 
-### ___PROJECTNAMEASIDENTIFIER__.function
+Set your publisher id
 
-TODO: This is an example of a module function.
+## Usage
+admob.setPublisherId("123456");
 
-### ___PROJECTNAMEASIDENTIFIER__.property
 
-TODO: This is an example of a module property.
+### setTesting(Boolean testing);
+
+set if the ads should be test ads or not -- 
+default is false so you only need to call this if you want to set it to true
+
+## Usage
+admob.setTesting(false);
+
+### createAdMobView()
+
+returns a view with an ad initialized by default
+
+## Usage
+var adMobView = admob.createAdMobView();
+
+### adReceived
+
+returns the constant for AD_RECEIVED -- for use in an event listener
+
+## Usage
+adMobView.addEventListener(admob.adReceived,function(){
+    alert("ad was just received");
+});
+
+### adNotReceived
+
+returns the constant for AD_NOT_RECEIVED -- for use in an event listener
+
+## Usage
+adMobView.addEventListener(admob.adNotReceived,function(){
+    alert("ad was not received");
+});
+
+
+### AdMobView.requestAd();
+
+calls for a new ad if needed
 
 ## Usage
 
-TODO: Enter your usage example here
+adMobView.requestAd();
+
+### AdMobView.requestTestAd();
+
+calls for a test ad if needed. This works independently from the testing flag above
+
+## Usage
+
+adMobView.requestTestAd();
+
+
 
 ## Author
 
-TODO: Enter your author name, email and other contact
-details you want to share here. 
+Brian Kurzius | bkurzius@gmail.com
 
 ## License
 
-TODO: Enter your license/legal information here.
+Apache License
